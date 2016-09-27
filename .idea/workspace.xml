@@ -47,18 +47,34 @@
       <file leaf-file-name="LoginView.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/LoginView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="60" column="110" selection-start-line="60" selection-start-column="110" selection-end-line="60" selection-end-column="110" />
+            <state relative-caret-position="-2484">
+              <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
               <folding>
-                <marker date="1474966327907" expanded="true" signature="1297:1437" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1926:2628" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1943:2013" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1943:2180" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1943:2206" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1943:2207" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1943:2238" ph="..." />
-                <marker date="1474966327907" expanded="true" signature="1943:2617" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="995:1014" ph="INSERT INTO users... " />
+                <marker date="1474992521735" expanded="true" signature="995:1067" ph="INSERT INTO users... " />
+                <marker date="1474992521735" expanded="true" signature="1340:1359" ph="SELECT * FRO... users" />
+                <marker date="1474992521735" expanded="true" signature="1340:1386" ph="SELECT * FRO... users" />
+                <marker date="1474992521735" expanded="true" signature="1340:1411" ph="SELECT * FRO... users" />
+                <marker date="1474992521735" expanded="true" signature="1353:1359" ph="INSERT INTO users... " />
+                <marker date="1474992521735" expanded="true" signature="2803:2943" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3440:4146" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3457:3527" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3457:3694" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3457:3720" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3457:3721" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3457:3756" ph="..." />
+                <marker date="1474992521735" expanded="true" signature="3457:4135" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="keep-directory" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/keep-directory">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -174,6 +190,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A2-Coding-with-requirements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A2-Coding-with-requirements" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -187,6 +217,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.php">
     <configuration default="false" name="index.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/A2-Coding-with-requirements/index.php">
@@ -264,12 +295,12 @@
       <workItem from="1474853404857" duration="6108000" />
       <workItem from="1474860069270" duration="11000" />
       <workItem from="1474860087809" duration="13000" />
-      <workItem from="1474955893242" duration="9310000" />
+      <workItem from="1474955893242" duration="22765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19450000" />
+    <option name="totallyTimeSpent" value="32905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -351,13 +382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/keep-directory">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/DateTimeView.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -387,19 +411,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/keep-directory">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/LoginView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="60" column="110" selection-start-line="60" selection-start-column="110" selection-end-line="60" selection-end-column="110" />
+        <state relative-caret-position="-2484">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
           <folding>
-            <marker date="1474966327907" expanded="true" signature="1297:1437" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1926:2628" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1943:2013" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1943:2180" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1943:2206" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1943:2207" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1943:2238" ph="..." />
-            <marker date="1474966327907" expanded="true" signature="1943:2617" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="995:1014" ph="INSERT INTO users... " />
+            <marker date="1474992521735" expanded="true" signature="995:1067" ph="INSERT INTO users... " />
+            <marker date="1474992521735" expanded="true" signature="1340:1359" ph="SELECT * FRO... users" />
+            <marker date="1474992521735" expanded="true" signature="1340:1386" ph="SELECT * FRO... users" />
+            <marker date="1474992521735" expanded="true" signature="1340:1411" ph="SELECT * FRO... users" />
+            <marker date="1474992521735" expanded="true" signature="1353:1359" ph="INSERT INTO users... " />
+            <marker date="1474992521735" expanded="true" signature="2803:2943" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3440:4146" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3457:3527" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3457:3694" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3457:3720" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3457:3721" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3457:3756" ph="..." />
+            <marker date="1474992521735" expanded="true" signature="3457:4135" ph="..." />
           </folding>
         </state>
       </provider>

@@ -9,7 +9,45 @@ class LoginView {
 	private static $cookiePassword = 'LoginView::CookiePassword';
 	private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
+    private $conn;
 
+    function __construct() {
+        $this->conn = pg_connect("host=ec2-54-75-228-51.eu-west-1.compute.amazonaws.com port=5432 dbname=dfamvr9489el11 user=bkmuesonvzihku password= SQ9eCnS1Y0UqO9t0qZ0clDO4nn sslmode=require");
+        if(!$this->conn)
+            die("Could not connect to database: ".mysqli_connect_error());
+    }
+
+    private function register() {
+
+        $username = $this->getRequestUserName();
+        $password = $this->getRequestPassword();
+        if( isset($username) && isset($password)) {
+
+            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+
+            $query = pg_query($this->conn, $sql);
+        }
+    }
+
+    private function login(){
+
+        $username = $this->getRequestUserName();
+        $password = $this->getRequestPassword();
+
+        if(isset($username) && isset($password)) {
+
+            $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+
+            $query = pg_query($this->conn, $sql);
+
+            $result = pg_fetch_object($query);
+
+            if($result)
+                return true;
+            else
+                return false;
+        }
+    }
 
 	/**
 	 * Create HTTP response
@@ -22,12 +60,22 @@ class LoginView {
 
 
 		$message = '';
+        $username = $this->getRequestUserName();
+        $password = $this->getRequestPassword();
 
-        if($this->getRequestUserName() === ""){
+        if($username === ""){
             $message = "Username is missing";
         }
-        if($this->getRequestUserName() !== "" && $this->getRequestPassword() === ""){
+        if($username !== "" && $password === ""){
             $message = "Password is missing";
+        }
+        if($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
+
+            if ($this->login())
+                $message = "Logged in";
+            else {
+                $message = "Wrong name or password";
+            }
         }
 
 
@@ -60,9 +108,9 @@ class LoginView {
 
 	    // If username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]))
-            $temp = $_POST[self::$name];
+            $username = $_POST[self::$name];
         else
-            $temp = "";
+            $username = "";
 
 		return '
 			<form method="post" > 
@@ -71,7 +119,7 @@ class LoginView {
 					<p id="' . self::$messageId . '">' . $message . '</p>
 					
 					<label for="' . self::$name . '">Username :</label>
-					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="'.$temp.'" />
+					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="'.$username.'" />
 
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
