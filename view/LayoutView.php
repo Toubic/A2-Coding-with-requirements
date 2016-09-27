@@ -27,11 +27,11 @@ class LayoutView {
   private function renderIsLoggedIn($isLoggedIn) {
 
       if ($isLoggedIn) {
-      return '<h2>Logged in</h2>';
+        return '<h2>Logged in</h2>';
 
       }
       else {
-      return '<h2>Not logged in</h2>';
+        return '<h2>Not logged in</h2>';
 
       }
   }

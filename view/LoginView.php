@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class LoginView {
 	private static $login = 'LoginView::Login';
 	private static $logout = 'LoginView::Logout';
@@ -61,6 +63,10 @@ class LoginView {
 		$message = '';
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
+        if($this->getLogout()) {
+            $message = "Bye bye!";
+            unset($_SESSION['isLoggedIn']);
+        }
 
         if($username === ""){
             $message = "Username is missing";
@@ -73,6 +79,7 @@ class LoginView {
             if ($this->login()) {
                 $message = "Welcome";
                 $response = $this->generateLogoutButtonHTML($message);
+                $_SESSION['isLoggedIn'] = true;
                 return $response;
             }
             else {
@@ -92,7 +99,7 @@ class LoginView {
 	*/
 	private function generateLogoutButtonHTML($message) {
 		return '
-			<form  method="post" >
+			<form method="post" >
 				<p id="' . self::$messageId . '">' . $message .'</p>
 				<input type="submit" name="' . self::$logout . '" value="logout"/>
 			</form>
@@ -143,6 +150,11 @@ class LoginView {
         //RETURN REQUEST VARIABLE: USERNAME
         if(isset($_POST[self::$password]))
             return $_POST[self::$password];
+    }
+    private function getLogout() {
+        //RETURN REQUEST VARIABLE: USERNAME
+        if(isset($_POST[self::$logout]))
+            return $_POST[self::$logout];
     }
 	
 }
