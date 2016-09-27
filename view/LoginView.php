@@ -29,7 +29,7 @@ class LoginView {
         }
     }
 
-    private function login(){
+    public function login(){
 
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
@@ -58,7 +58,6 @@ class LoginView {
 	 */
 	public function response() {
 
-
 		$message = '';
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
@@ -71,16 +70,17 @@ class LoginView {
         }
         if($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
 
-            if ($this->login())
-                $message = "Logged in";
+            if ($this->login()) {
+                $message = "Welcome";
+                $response = $this->generateLogoutButtonHTML($message);
+                return $response;
+            }
             else {
                 $message = "Wrong name or password";
             }
         }
 
-
 		$response = $this->generateLoginFormHTML($message);
-		//$response .= $this->generateLogoutButtonHTML($message);
 
 		return $response;
 	}

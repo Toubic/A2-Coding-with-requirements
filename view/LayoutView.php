@@ -3,7 +3,7 @@
 
 class LayoutView {
   
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+  public function render(LoginView $v, DateTimeView $dtv) {
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -12,7 +12,7 @@ class LayoutView {
         </head>
         <body>
           <h1>Assignment 2</h1>
-          ' . $this->renderIsLoggedIn($isLoggedIn) . '
+          ' . $this->renderIsLoggedIn($v->login()) . '
           
           <div class="container">
               ' . $v->response() . '
@@ -23,13 +23,16 @@ class LayoutView {
       </html>
     ';
   }
-  
+
   private function renderIsLoggedIn($isLoggedIn) {
-    if ($isLoggedIn) {
+
+      if ($isLoggedIn) {
       return '<h2>Logged in</h2>';
-    }
-    else {
+
+      }
+      else {
       return '<h2>Not logged in</h2>';
-    }
+
+      }
   }
 }
