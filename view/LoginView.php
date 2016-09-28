@@ -71,17 +71,22 @@ class LoginView {
                 $message = "Wrong name or password";
             }
         }
-        if($this->isLoggedOut()) {
-            $_SESSION['isLoggedIn'] = "No";
-            $message = "Bye bye!";
-        }
 
         if($_SESSION['isLoggedIn'] === "No") {
             $response = $this->generateLoginFormHTML($message);
+            $message = "";
+            return $response;
+        }
+        if($this->isLoggedOut()) {
+            $_SESSION['isLoggedIn'] = "No";
+            $message = "Bye bye!";
+            $response = $this->generateLoginFormHTML($message);
+            $message = "";
             return $response;
         }
         if($_SESSION['isLoggedIn'] === "Yes") {
             $response = $this->generateLogoutButtonHTML($message);
+            $message = "";
             return $response;
         }
 
