@@ -5,10 +5,11 @@ class LayoutView {
   
   public function render(LoginView $v, DateTimeView $dtv) {
 
-      if(!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
-          $isLoggedIn = "No";
-      elseif ($v->login($v->getRequestUserName(), $v->getRequestPassword()))
+
+      if ($v->login($v->getRequestUserName(), $v->getRequestPassword()))
           $isLoggedIn = "Yes";
+      elseif (!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
+            $isLoggedIn = "No";
       else
           $isLoggedIn = $_SESSION['isLoggedIn'];
 
