@@ -12,8 +12,10 @@ class LayoutView {
           $isLoggedIn = "No";
       else
           $isLoggedIn = $_SESSION['isLoggedIn'];
-      if($isLoggedIn === "No")
+      if($isLoggedIn === "No" && !isset($_GET["new"]))
         $aTag = '<a href="?new">Register a new user</a>';
+      else if(isset($_GET["new"]))
+          $aTag = '<a href="/1dv610/A2-Coding-with-requirements">Back to login</a>';
       else
           $aTag = "";
       echo '<!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php
+require_once('RegisterView.php');
 
 class LoginView {
 	private static $login = 'LoginView::Login';
@@ -10,11 +11,13 @@ class LoginView {
 	private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
     private $conn;
+    private $rv;
 
     function __construct() {
         $this->conn = pg_connect("host=ec2-54-75-228-51.eu-west-1.compute.amazonaws.com port=5432 dbname=dfamvr9489el11 user=bkmuesonvzihku password= SQ9eCnS1Y0UqO9t0qZ0clDO4nn sslmode=require");
         if(!$this->conn)
             die("Could not connect to database: ".mysqli_connect_error());
+        $this->rv = new RegisterView($this->conn);
     }
 
     private function register($username, $password) {
@@ -46,12 +49,18 @@ class LoginView {
 	 * @return  void BUT writes to standard output and cookies!
 	 */
 	public function response() {
+
         if(!isset($_SESSION['isLoggedIn']))
             $_SESSION['isLoggedIn'] = "No";
 
 		$message = '';
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
+
+        if(isset($_GET["new"])){
+            $response = $this->rv->generateRegisterNewUserHTML($message);
+            return $response;
+        }
 
         if($username === ""){
             $message = "Username is missing";
