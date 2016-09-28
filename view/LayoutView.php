@@ -9,10 +9,13 @@ class LayoutView {
       if ($v->login($v->getRequestUserName(), $v->getRequestPassword()))
           $isLoggedIn = "Yes";
       elseif (!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
-            $isLoggedIn = "No";
+          $isLoggedIn = "No";
       else
           $isLoggedIn = $_SESSION['isLoggedIn'];
-
+      if($isLoggedIn === "No")
+        $aTag = '<a href="?new">Register a new user</a>';
+      else
+          $aTag = "";
       echo '<!DOCTYPE html>
           <html>
             <head>
@@ -21,6 +24,7 @@ class LayoutView {
             </head>
             <body>
               <h1>Assignment 2</h1>
+              ' . $aTag . '
               ' . $this->renderIsLoggedIn($isLoggedIn) . '
               
               <div class="container">
