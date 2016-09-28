@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class LoginView {
 	private static $login = 'LoginView::Login';
 	private static $logout = 'LoginView::Logout';
@@ -19,24 +17,14 @@ class LoginView {
             die("Could not connect to database: ".mysqli_connect_error());
     }
 
-    private function register() {
-
-        $username = $this->getRequestUserName();
-        $password = $this->getRequestPassword();
-        if( isset($username) && isset($password)) {
+    private function register($username, $password) {
 
             $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
 
             $query = pg_query($this->conn, $sql);
-        }
     }
 
-    public function login(){
-
-        $username = $this->getRequestUserName();
-        $password = $this->getRequestPassword();
-
-        if(isset($username) && isset($password)) {
+    public function login($username, $password){
 
             $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 
@@ -48,7 +36,6 @@ class LoginView {
                 return true;
             else
                 return false;
-        }
     }
 
 	/**
@@ -59,6 +46,8 @@ class LoginView {
 	 * @return  void BUT writes to standard output and cookies!
 	 */
 	public function response() {
+        if(!isset($_SESSION['isLoggedIn']))
+            $_SESSION['isLoggedIn'] = "No";
 
 		$message = '';
         $username = $this->getRequestUserName();
@@ -71,31 +60,32 @@ class LoginView {
             $message = "Password is missing";
         }
         if($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
-
-            if ($_SESSION['isLoggedIn']) {
+            if($_SESSION['isLoggedIn'] === "Yes"){
+                $message = "";
+            }
+            elseif ($this->login($username, $password)) {
+                $_SESSION['isLoggedIn'] = "Yes";
                 $message = "Welcome";
-                $_SESSION['isLoggedIn'] = true;
-                $response = $this->generateLogoutButtonHTML($message);
-                return $response;
             }
             else {
                 $message = "Wrong name or password";
             }
         }
-        elseif($this->isLoggedOut()) {
+        if($this->isLoggedOut()) {
+            $_SESSION['isLoggedIn'] = "No";
             $message = "Bye bye!";
-            $_SESSION['isLoggedIn'] = false;
-            header("Refresh:1");
-
         }
-        elseif($_SESSION['isLoggedIn']){
+
+        if($_SESSION['isLoggedIn'] === "No") {
+            $response = $this->generateLoginFormHTML($message);
+            return $response;
+        }
+        if($_SESSION['isLoggedIn'] === "Yes") {
             $response = $this->generateLogoutButtonHTML($message);
             return $response;
         }
-		$response = $this->generateLoginFormHTML($message);
-        $_SESSION['isLoggedIn'] = false;
 
-		return $response;
+
 	}
 
 	/**
@@ -147,17 +137,17 @@ class LoginView {
 	}
 	
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
-	private function getRequestUserName() {
+	public function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
         if(isset($_POST[self::$name]))
             return $_POST[self::$name];
 	}
-    private function getRequestPassword() {
+    public function getRequestPassword() {
         //RETURN REQUEST VARIABLE: PASSWORD
         if(isset($_POST[self::$password]))
             return $_POST[self::$password];
     }
-    private function isLoggedOut() {
+    public function isLoggedOut() {
         //RETURN REQUEST BOOL:
         if(isset($_POST[self::$logout]))
             return true;

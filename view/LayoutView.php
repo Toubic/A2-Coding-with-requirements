@@ -5,10 +5,13 @@ class LayoutView {
   
   public function render(LoginView $v, DateTimeView $dtv) {
 
-      if($v->login())
-          $_SESSION['isLoggedIn'] = true;
-      if (!isset($_SESSION['isLoggedIn']))
-          $_SESSION['isLoggedIn'] = false;
+      if(!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
+          $isLoggedIn = "No";
+      elseif ($v->login($v->getRequestUserName(), $v->getRequestPassword()))
+          $isLoggedIn = "Yes";
+      else
+          $isLoggedIn = $_SESSION['isLoggedIn'];
+
       echo '<!DOCTYPE html>
           <html>
             <head>
@@ -17,7 +20,7 @@ class LayoutView {
             </head>
             <body>
               <h1>Assignment 2</h1>
-              ' . $this->renderIsLoggedIn($_SESSION['isLoggedIn']) . '
+              ' . $this->renderIsLoggedIn($isLoggedIn) . '
               
               <div class="container">
                   ' . $v->response() . '
@@ -31,13 +34,11 @@ class LayoutView {
 
   private function renderIsLoggedIn($isLoggedIn) {
 
-      if ($isLoggedIn) {
-        return '<h2>Logged in</h2>';
-
-      }
-      else {
-        return '<h2>Not logged in</h2>';
-
-      }
+      if ($isLoggedIn === "Yes")
+          return '<h2>Logged in</h2>';
+      if ($isLoggedIn === "No")
+          return '<h2>Not logged in</h2>';
+      else
+          return '<h2>Logged in</h2>';
   }
 }
