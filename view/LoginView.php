@@ -57,7 +57,7 @@ class LoginView {
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
 
-        if(isset($_GET["new"])){
+        if(isset($_GET["register"])){
             $response = $this->rv->generateRegisterNewUserHTML($message);
             return $response;
         }
