@@ -63,10 +63,6 @@ class LoginView {
 		$message = '';
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
-        if($this->getLogout()) {
-            $message = "Bye bye!";
-            unset($_SESSION['isLoggedIn']);
-        }
 
         if($username === ""){
             $message = "Username is missing";
@@ -76,18 +72,28 @@ class LoginView {
         }
         if($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
 
-            if ($this->login()) {
+            if ($_SESSION['isLoggedIn']) {
                 $message = "Welcome";
-                $response = $this->generateLogoutButtonHTML($message);
                 $_SESSION['isLoggedIn'] = true;
+                $response = $this->generateLogoutButtonHTML($message);
                 return $response;
             }
             else {
                 $message = "Wrong name or password";
             }
         }
+        elseif($this->isLoggedOut()) {
+            $message = "Bye bye!";
+            $_SESSION['isLoggedIn'] = false;
+            header("Refresh:1");
 
+        }
+        elseif($_SESSION['isLoggedIn']){
+            $response = $this->generateLogoutButtonHTML($message);
+            return $response;
+        }
 		$response = $this->generateLoginFormHTML($message);
+        $_SESSION['isLoggedIn'] = false;
 
 		return $response;
 	}
@@ -147,14 +153,16 @@ class LoginView {
             return $_POST[self::$name];
 	}
     private function getRequestPassword() {
-        //RETURN REQUEST VARIABLE: USERNAME
+        //RETURN REQUEST VARIABLE: PASSWORD
         if(isset($_POST[self::$password]))
             return $_POST[self::$password];
     }
-    private function getLogout() {
-        //RETURN REQUEST VARIABLE: USERNAME
+    private function isLoggedOut() {
+        //RETURN REQUEST BOOL:
         if(isset($_POST[self::$logout]))
-            return $_POST[self::$logout];
+            return true;
+        else
+            return false;
     }
 	
 }
