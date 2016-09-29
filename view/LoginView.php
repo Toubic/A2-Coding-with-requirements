@@ -65,7 +65,8 @@ class LoginView {
 
                 if($registerPassword !== $registerRepeatPassword)
                     $message .= "Passwords do not match.<br>";
-
+                if($this->rv->userExists($registerUsername))
+                    $message .= "User exists, pick another username.<br>";
                 $response = $this->rv->generateRegisterNewUserHTML($message);
                 return $response;
         }

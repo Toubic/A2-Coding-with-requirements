@@ -13,12 +13,26 @@ class RegisterView
     {
         $this->conn = $conn;
     }
+    public function userExists($username){
+
+        $sql = "SELECT * FROM users WHERE username='$username'";
+
+        $query = pg_query($this->conn, $sql);
+
+        $result = pg_fetch_object($query);
+
+        if($result)
+            return true;
+        else
+            return false;
+    }
 
     public function generateRegisterNewUserHTML($message){
 
         // If valid username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]) && strlen($_POST[self::$name]) >= 3 && $_POST[self::$password] === "")
             $username = $_POST[self::$name];
+
         // If short username has been entered but passwords are valid then fill in the username again automatically:
         elseif(isset($_POST[self::$password]) && $_POST[self::$password] === $_POST[self::$passwordRepeat] &&
             strlen($_POST[self::$password]) >= 6 &&
@@ -36,6 +50,12 @@ class RegisterView
             isset($_POST[self::$password]) && strlen($_POST[self::$password]) >= 6 &&
             isset($_POST[self::$passwordRepeat]) && strlen($_POST[self::$passwordRepeat]) >= 6 &&
             $_POST[self::$password] !== $_POST[self::$passwordRepeat]){
+            $username = $_POST[self::$name];
+        }
+        // If username already exists but passwords are valid, then fill in the username again automatically:
+        elseif(isset($_POST[self::$password]) && $_POST[self::$password] === $_POST[self::$passwordRepeat] &&
+            strlen($_POST[self::$password]) >= 6 &&
+            $this->userExists($_POST[self::$name])) {
             $username = $_POST[self::$name];
         }
         else
@@ -61,6 +81,7 @@ class RegisterView
 			</form>
 		';
     }
+
     public function getRegisterUserName() {
         //RETURN REQUEST VARIABLE: USERNAME
         if(isset($_POST[self::$name]))
