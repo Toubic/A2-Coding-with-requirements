@@ -16,6 +16,12 @@ class RegisterView
 
     public function generateRegisterNewUserHTML($message){
 
+        // If valid username has been entered but password is missing then fill in the username again automatically:
+        if(isset($_POST[self::$name]) && strlen($_POST[self::$name]) >= 3 && $_POST[self::$password] === "")
+            $username = $_POST[self::$name];
+        else
+            $username = "";
+
         return '
 			<form method="post" > 
 				<fieldset>
@@ -23,7 +29,7 @@ class RegisterView
 					<p id="' . self::$messageId . '">' . $message . '</p>
 					
 					<label for="' . self::$name . '">Enter username :</label>
-					<input type="text" id="' . self::$name . '" name="' . self::$name . '" />
+					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="'.$username.'" />
                     <br>
 					<label for="' . self::$password . '">Enter password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
