@@ -6,7 +6,7 @@ class RegisterView
     private static $password = 'RegisterView::Password';
     private static $passwordRepeat = 'RegisterView::PasswordRepeat';
     private static $message = 'RegisterView::Message';
-    private static $submit = 'RegisterView::Submit';
+    private static $register = 'RegisterView::Register';
     private $conn;
 
     function __construct($conn)
@@ -31,7 +31,7 @@ class RegisterView
 					<label for="' . self::$passwordRepeat . '">Repeat password :</label>
 					<input type="password" id="' . self::$passwordRepeat . '" name="' . self::$passwordRepeat . '" />
 					<br>
-					<input type="submit" name="' . self::$submit . '" value="submit" />
+					<input type="submit" name="' . self::$register . '" value="Register" />
 				</fieldset>
 			</form>
 		';
@@ -51,8 +51,8 @@ class RegisterView
         if(isset($_POST[self::$passwordRepeat]))
             return $_POST[self::$passwordRepeat];
     }
-    public function getRegisterSubmit() {
+    public function getRegister() {
         //RETURN REQUEST VARIABLE: PASSWORD
-        return isset($_POST[self::$submit]);
+        return isset($_POST[self::$register]);
     }
 }
