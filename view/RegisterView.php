@@ -19,6 +19,12 @@ class RegisterView
         // If valid username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]) && strlen($_POST[self::$name]) >= 3 && $_POST[self::$password] === "")
             $username = $_POST[self::$name];
+        // If short username has been entered but passwords are valid then fill in the username again automatically:
+        elseif(isset($_POST[self::$password]) && $_POST[self::$password] === $_POST[self::$passwordRepeat] &&
+            strlen($_POST[self::$password]) >= 6 &&
+            strlen($_POST[self::$name]) <=3 && strlen($_POST[self::$name]) > 0){
+            $username = $_POST[self::$name];
+        }
         else
             $username = "";
 
