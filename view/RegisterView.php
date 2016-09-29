@@ -31,6 +31,13 @@ class RegisterView
             strlen($_POST[self::$name]) >= 3){
             $username = $_POST[self::$name];
         }
+        // If valid username has been entered but passwords are unequal then fill in the username again automatically:
+        elseif(isset($_POST[self::$name]) && strlen($_POST[self::$name]) >= 3 &&
+            isset($_POST[self::$password]) && strlen($_POST[self::$password]) >= 6 &&
+            isset($_POST[self::$passwordRepeat]) && strlen($_POST[self::$passwordRepeat]) >= 6 &&
+            $_POST[self::$password] !== $_POST[self::$passwordRepeat]){
+            $username = $_POST[self::$name];
+        }
         else
             $username = "";
 
