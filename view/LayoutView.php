@@ -1,23 +1,39 @@
 <?php
 
+/** Class for layout
+ * Class LayoutView
+ */
 
 class LayoutView {
-  
+
+    /** Render view
+     * @param LoginView $v
+     * @param DateTimeView $dtv
+     */
+
   public function render(LoginView $v, DateTimeView $dtv) {
 
-
-      if ($v->login($v->getRequestUserName(), $v->getRequestPassword()))
+      // If logged in or not:
+      if($v->login($v->getRequestUserName(), $v->getRequestPassword()))
           $isLoggedIn = "Yes";
-      elseif (!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
+
+      elseif(!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
           $isLoggedIn = "No";
+
       else
           $isLoggedIn = $_SESSION['isLoggedIn'];
+
+
+      // Set different a tag depending on current view:
       if($isLoggedIn === "No" && !isset($_GET["register"]))
         $aTag = '<a href="?register">Register a new user</a>';
-      else if(isset($_GET["register"]))
+
+      elseif(isset($_GET["register"]))
           $aTag = '<a href="/">Back to login</a>';
+
       else
           $aTag = "";
+
       echo '<!DOCTYPE html>
           <html>
             <head>
@@ -38,6 +54,11 @@ class LayoutView {
           </html>
       ';
   }
+
+    /** Render "Logged in"/"Not logged in" in current view
+     * @param $isLoggedIn, if logged in or not
+     * @return string
+     */
 
   private function renderIsLoggedIn($isLoggedIn) {
 

@@ -2,6 +2,9 @@
 
 class DateTimeView {
 
+    /** Show current date and time
+     * @return string, result
+     */
 
 	public function show() {
 

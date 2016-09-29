@@ -1,6 +1,10 @@
 <?php
 require_once('RegisterView.php');
 
+/** Class LoginView that is connectedgit  RegisterView
+ * Class LoginView
+ */
+
 class LoginView {
 	private static $login = 'LoginView::Login';
 	private static $logout = 'LoginView::Logout';
@@ -47,14 +51,17 @@ class LoginView {
             $_SESSION['isLoggedIn'] = "No";
 
 		$message = '';
+
+        //Fetch login request variables:
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
 
+        //Fetch register reequest variables:
         $registerUsername = $this->rv->getRegisterUserName();
         $registerPassword = $this->rv->getRegisterPassword();
         $registerRepeatPassword = $this->rv->getRegisterRepeatPassword();
 
-
+        //If in register view:
         if(isset($_GET["register"])){
 
                 if (is_string($registerUsername) && strlen($registerUsername) < 3)
@@ -65,12 +72,14 @@ class LoginView {
 
                 if($registerPassword !== $registerRepeatPassword)
                     $message .= "Passwords do not match.<br>";
+
                 if($this->rv->userExists($registerUsername))
                     $message .= "User exists, pick another username.<br>";
                 $response = $this->rv->generateRegisterNewUserHTML($message);
                 return $response;
         }
 
+        //If login view:
         if(!isset($_GET["register"])) {
             if ($username === "") {
                 $message = "Username is missing";
@@ -88,12 +97,13 @@ class LoginView {
                     $message = "Wrong name or password";
                 }
             }
-
+            //If not logged in:
             if ($_SESSION['isLoggedIn'] === "No") {
                 $response = $this->generateLoginFormHTML($message);
                 $message = "";
                 return $response;
             }
+            // If logged out:
             if ($this->isLoggedOut()) {
                 $_SESSION['isLoggedIn'] = "No";
                 $message = "Bye bye!";
@@ -101,6 +111,7 @@ class LoginView {
                 $message = "";
                 return $response;
             }
+            //If logged in successfully:
             if ($_SESSION['isLoggedIn'] === "Yes") {
                 $response = $this->generateLogoutButtonHTML($message);
                 $message = "";
@@ -125,7 +136,7 @@ class LoginView {
 	}
 	
 	/**
-	* Generate HTML code on the output buffer for the logout button
+	* Generate HTML code on the output buffer for the login form
 	* @param $message, String output message
 	* @return  void, BUT writes to standard output!
 	*/

@@ -1,5 +1,9 @@
 <?php
 
+/** Class view for registration
+ * Class RegisterView
+ */
+
 class RegisterView
 {
     private static $name = 'RegisterView::UserName';
@@ -9,10 +13,33 @@ class RegisterView
     private static $register = 'RegisterView::Register';
     private $conn;
 
+    /**
+     * RegisterView constructor.
+     * @param $conn, connection to the database
+     */
+
     function __construct($conn)
     {
         $this->conn = $conn;
     }
+
+    /** Insert a new user to the database
+     * @param $username
+     * @param $password
+     */
+
+    public function insertUserToDatabase($username, $password) {
+
+        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+
+        $query = pg_query($this->conn, $sql);
+    }
+
+    /** Checks if user exists in the database
+     * @param $username, username to check
+     * @return bool, true if user exists
+     */
+
     public function userExists($username){
 
         $sql = "SELECT * FROM users WHERE username='$username'";
@@ -32,7 +59,6 @@ class RegisterView
         // If valid username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]) && strlen($_POST[self::$name]) >= 3 && $_POST[self::$password] === "")
             $username = $_POST[self::$name];
-
         // If short username has been entered but passwords are valid then fill in the username again automatically:
         elseif(isset($_POST[self::$password]) && $_POST[self::$password] === $_POST[self::$passwordRepeat] &&
             strlen($_POST[self::$password]) >= 6 &&
@@ -82,23 +108,20 @@ class RegisterView
 		';
     }
 
+    //CREATE GET-FUNCTIONS TO FETCH REGISTER VARIABLES
     public function getRegisterUserName() {
-        //RETURN REQUEST VARIABLE: USERNAME
+        //RETURN REQUEST VARIABLE: username
         if(isset($_POST[self::$name]))
             return $_POST[self::$name];
     }
     public function getRegisterPassword() {
-        //RETURN REQUEST VARIABLE: PASSWORD
+        //RETURN REQUEST VARIABLE: password
         if(isset($_POST[self::$password]))
             return $_POST[self::$password];
     }
     public function getRegisterRepeatPassword() {
-        //RETURN REQUEST VARIABLE: PASSWORD
+        //RETURN REQUEST VARIABLE: passwordRepeat
         if(isset($_POST[self::$passwordRepeat]))
             return $_POST[self::$passwordRepeat];
-    }
-    public function getRegister() {
-        //RETURN REQUEST VARIABLE: PASSWORD
-        return isset($_POST[self::$register]);
     }
 }
