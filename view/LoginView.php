@@ -55,24 +55,22 @@ class LoginView {
         $registerRepeatPassword = $this->rv->getRegisterRepeatPassword();
 
 
-        if(isset($_GET["register"]) && !isset($_SESSION['isOnRegisterPage'])){
-            $_SESSION['isOnRegisterPage'] = "Yes";
-            $response = $this->rv->generateRegisterNewUserHTML($message);
-            return $response;
-        }
-        if(!isset($_GET["register"]))
-            unset($_SESSION['isOnRegisterPage']);
-        if(isset($_SESSION['isOnRegisterPage'])){
-                if (is_string($registerUsername) && strlen($registerUsername) < 3) {
+        if(isset($_GET["register"])){
+
+                if (is_string($registerUsername) && strlen($registerUsername) < 3)
                     $message = "Username has too few characters, at least 3 characters.<br>";
-                }
-                if (is_string($registerPassword) && strlen($registerPassword) < 6) {
+
+                if (is_string($registerPassword) && strlen($registerPassword) < 6)
                     $message .= "Password has too few characters, at least 6 characters.<br>";
-                }
+
+                if($registerPassword !== $registerRepeatPassword)
+                    $message .= "Passwords do not match.<br>";
+
                 $response = $this->rv->generateRegisterNewUserHTML($message);
                 return $response;
         }
-        if(!isset($_SESSION['isOnRegisterPage'])) {
+
+        if(!isset($_GET["register"])) {
             if ($username === "") {
                 $message = "Username is missing";
             }
