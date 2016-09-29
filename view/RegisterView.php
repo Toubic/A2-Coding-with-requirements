@@ -36,4 +36,23 @@ class RegisterView
 			</form>
 		';
     }
+    public function getRegisterUserName() {
+        //RETURN REQUEST VARIABLE: USERNAME
+        if(isset($_POST[self::$name]))
+            return $_POST[self::$name];
+    }
+    public function getRegisterPassword() {
+        //RETURN REQUEST VARIABLE: PASSWORD
+        if(isset($_POST[self::$password]))
+            return $_POST[self::$password];
+    }
+    public function getRegisterRepeatPassword() {
+        //RETURN REQUEST VARIABLE: PASSWORD
+        if(isset($_POST[self::$passwordRepeat]))
+            return $_POST[self::$passwordRepeat];
+    }
+    public function getRegisterSubmit() {
+        //RETURN REQUEST VARIABLE: PASSWORD
+        return isset($_POST[self::$submit]);
+    }
 }

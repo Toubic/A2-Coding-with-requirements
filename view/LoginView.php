@@ -20,13 +20,6 @@ class LoginView {
         $this->rv = new RegisterView($this->conn);
     }
 
-    private function register($username, $password) {
-
-            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-
-            $query = pg_query($this->conn, $sql);
-    }
-
     public function login($username, $password){
 
             $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
@@ -57,48 +50,66 @@ class LoginView {
         $username = $this->getRequestUserName();
         $password = $this->getRequestPassword();
 
-        if(isset($_GET["register"])){
+        $registerUsername = $this->rv->getRegisterUserName();
+        $registerPassword = $this->rv->getRegisterPassword();
+        $registerRepeatPassword = $this->rv->getRegisterRepeatPassword();
+
+
+        if(isset($_GET["register"]) && !isset($_SESSION['isOnRegisterPage'])){
+            $_SESSION['isOnRegisterPage'] = "Yes";
             $response = $this->rv->generateRegisterNewUserHTML($message);
             return $response;
         }
+        if(!isset($_GET["register"]))
+            unset($_SESSION['isOnRegisterPage']);
+        if(isset($_SESSION['isOnRegisterPage'])){
+            if($this->rv->getRegisterSubmit()) {
+                if (is_string($registerUsername) && strlen($registerUsername) < 3) {
+                    $message = "Username has too few characters, at least 3 characters.<br>";
+                }
+                if (is_string($registerPassword) && strlen($registerPassword) < 6) {
+                    $message .= "Password has too few characters, at least 6 characters.<br>";
+                }
+                $response = $this->rv->generateRegisterNewUserHTML($message);
+                return $response;
+            }
+        }
+        if(!isset($_SESSION['isOnRegisterPage'])) {
+            if ($username === "") {
+                $message = "Username is missing";
+            }
+            if ($username !== "" && $password === "") {
+                $message = "Password is missing";
+            }
+            if ($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
+                if ($_SESSION['isLoggedIn'] === "Yes") {
+                    $message = "";
+                } elseif ($this->login($username, $password)) {
+                    $_SESSION['isLoggedIn'] = "Yes";
+                    $message = "Welcome";
+                } else {
+                    $message = "Wrong name or password";
+                }
+            }
 
-        if($username === ""){
-            $message = "Username is missing";
-        }
-        if($username !== "" && $password === ""){
-            $message = "Password is missing";
-        }
-        if($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
-            if($_SESSION['isLoggedIn'] === "Yes"){
+            if ($_SESSION['isLoggedIn'] === "No") {
+                $response = $this->generateLoginFormHTML($message);
                 $message = "";
+                return $response;
             }
-            elseif ($this->login($username, $password)) {
-                $_SESSION['isLoggedIn'] = "Yes";
-                $message = "Welcome";
+            if ($this->isLoggedOut()) {
+                $_SESSION['isLoggedIn'] = "No";
+                $message = "Bye bye!";
+                $response = $this->generateLoginFormHTML($message);
+                $message = "";
+                return $response;
             }
-            else {
-                $message = "Wrong name or password";
+            if ($_SESSION['isLoggedIn'] === "Yes") {
+                $response = $this->generateLogoutButtonHTML($message);
+                $message = "";
+                return $response;
             }
         }
-
-        if($_SESSION['isLoggedIn'] === "No") {
-            $response = $this->generateLoginFormHTML($message);
-            $message = "";
-            return $response;
-        }
-        if($this->isLoggedOut()) {
-            $_SESSION['isLoggedIn'] = "No";
-            $message = "Bye bye!";
-            $response = $this->generateLoginFormHTML($message);
-            $message = "";
-            return $response;
-        }
-        if($_SESSION['isLoggedIn'] === "Yes") {
-            $response = $this->generateLogoutButtonHTML($message);
-            $message = "";
-            return $response;
-        }
-
 
 	}
 
