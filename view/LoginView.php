@@ -65,10 +65,10 @@ class LoginView {
         if(isset($_SESSION['isOnRegisterPage'])){
             if($this->rv->getRegisterSubmit()) {
                 if (is_string($registerUsername) && strlen($registerUsername) < 3) {
-                    $message = "Username has too few characters, at least 3 characters.<br>";
+                    $message = "Username has too few characters, at least 3 characters.";
                 }
                 if (is_string($registerPassword) && strlen($registerPassword) < 6) {
-                    $message .= "Password has too few characters, at least 6 characters.<br>";
+                    $message .= "Password has too few characters, at least 6 characters.";
                 }
                 $response = $this->rv->generateRegisterNewUserHTML($message);
                 return $response;
