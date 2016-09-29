@@ -63,7 +63,6 @@ class LoginView {
         if(!isset($_GET["register"]))
             unset($_SESSION['isOnRegisterPage']);
         if(isset($_SESSION['isOnRegisterPage'])){
-            if($this->rv->getRegister()) {
                 if (is_string($registerUsername) && strlen($registerUsername) < 3) {
                     $message = "Username has too few characters, at least 3 characters.<br>";
                 }
@@ -72,7 +71,6 @@ class LoginView {
                 }
                 $response = $this->rv->generateRegisterNewUserHTML($message);
                 return $response;
-            }
         }
         if(!isset($_SESSION['isOnRegisterPage'])) {
             if ($username === "") {
@@ -174,10 +172,7 @@ class LoginView {
     }
     public function isLoggedOut() {
         //RETURN REQUEST BOOL:
-        if(isset($_POST[self::$logout]))
-            return true;
-        else
-            return false;
+        return isset($_POST[self::$logout]);
+
     }
-	
 }
