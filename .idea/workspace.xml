@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8b0c36d-34da-4d9f-9bf3-cc318628342f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/LoginView.php" afterPath="$PROJECT_DIR$/view/LoginView.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/RegisterView.php" afterPath="$PROJECT_DIR$/view/RegisterView.php" />
     </list>
     <ignored path="A2-Coding-with-requirements.iws" />
@@ -44,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginView.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginView.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/LoginView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="70" column="92" selection-start-line="70" selection-start-column="92" selection-end-line="70" selection-end-column="92" />
+            <state relative-caret-position="130">
+              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="51" />
               <folding>
                 <marker date="1475108808467" expanded="true" signature="961:980" ph="SELECT * FRO... users" />
                 <marker date="1475108808467" expanded="true" signature="961:1007" ph="SELECT * FRO... users" />
@@ -67,15 +67,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterView.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RegisterView.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+            <state relative-caret-position="189">
+              <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
               <folding>
-                <marker date="1475108725246" expanded="true" signature="512:1301" ph="..." />
-                <marker date="1475108725246" expanded="true" signature="529:635" ph="..." />
-                <marker date="1475108725246" expanded="true" signature="529:1290" ph="..." />
+                <marker date="1475109650733" expanded="true" signature="514:1305" ph="..." />
+                <marker date="1475109650733" expanded="true" signature="531:639" ph="..." />
+                <marker date="1475109650733" expanded="true" signature="531:1294" ph="..." />
               </folding>
             </state>
           </provider>
@@ -126,8 +126,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/view/DateTimeView.php" />
         <option value="$PROJECT_DIR$/view/LayoutView.php" />
-        <option value="$PROJECT_DIR$/view/RegisterView.php" />
         <option value="$PROJECT_DIR$/view/LoginView.php" />
+        <option value="$PROJECT_DIR$/view/RegisterView.php" />
       </list>
     </option>
   </component>
@@ -267,12 +267,12 @@
       <workItem from="1474955893242" duration="55207000" />
       <workItem from="1475028982190" duration="13911000" />
       <workItem from="1475057798537" duration="8816000" />
-      <workItem from="1475094472946" duration="14371000" />
+      <workItem from="1475094472946" duration="15182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102445000" />
+    <option name="totallyTimeSpent" value="103256000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -620,22 +620,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-          <folding>
-            <marker date="1475108725246" expanded="true" signature="512:1301" ph="..." />
-            <marker date="1475108725246" expanded="true" signature="529:635" ph="..." />
-            <marker date="1475108725246" expanded="true" signature="529:1290" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/LoginView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="70" column="92" selection-start-line="70" selection-start-column="92" selection-end-line="70" selection-end-column="92" />
+        <state relative-caret-position="130">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="51" />
           <folding>
             <marker date="1475108808467" expanded="true" signature="961:980" ph="SELECT * FRO... users" />
             <marker date="1475108808467" expanded="true" signature="961:1007" ph="SELECT * FRO... users" />
@@ -649,6 +637,18 @@
             <marker date="1475108808467" expanded="true" signature="5143:5407" ph="..." />
             <marker date="1475108808467" expanded="true" signature="5143:5442" ph="..." />
             <marker date="1475108808467" expanded="true" signature="5143:5821" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+          <folding>
+            <marker date="1475109650733" expanded="true" signature="514:1305" ph="..." />
+            <marker date="1475109650733" expanded="true" signature="531:639" ph="..." />
+            <marker date="1475109650733" expanded="true" signature="531:1294" ph="..." />
           </folding>
         </state>
       </provider>
