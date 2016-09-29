@@ -70,13 +70,13 @@
       <file leaf-file-name="RegisterView.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+            <state relative-caret-position="0">
+              <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
               <folding>
-                <marker date="1475118272265" expanded="true" signature="1242:2055" ph="..." />
-                <marker date="1475118272265" expanded="true" signature="1259:1367" ph="..." />
-                <marker date="1475118272265" expanded="true" signature="1259:1540" ph="..." />
-                <marker date="1475118272265" expanded="true" signature="1259:2044" ph="..." />
+                <marker date="1475119181086" expanded="true" signature="1663:2476" ph="..." />
+                <marker date="1475119181086" expanded="true" signature="1680:1788" ph="..." />
+                <marker date="1475119181086" expanded="true" signature="1680:1961" ph="..." />
+                <marker date="1475119181086" expanded="true" signature="1680:2465" ph="..." />
               </folding>
             </state>
           </provider>
@@ -268,12 +268,12 @@
       <workItem from="1474955893242" duration="55207000" />
       <workItem from="1475028982190" duration="13911000" />
       <workItem from="1475057798537" duration="8816000" />
-      <workItem from="1475094472946" duration="23013000" />
+      <workItem from="1475094472946" duration="24041000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111087000" />
+    <option name="totallyTimeSpent" value="112115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="7" />
@@ -644,13 +644,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        <state relative-caret-position="0">
+          <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
           <folding>
-            <marker date="1475118272265" expanded="true" signature="1242:2055" ph="..." />
-            <marker date="1475118272265" expanded="true" signature="1259:1367" ph="..." />
-            <marker date="1475118272265" expanded="true" signature="1259:1540" ph="..." />
-            <marker date="1475118272265" expanded="true" signature="1259:2044" ph="..." />
+            <marker date="1475119181086" expanded="true" signature="1663:2476" ph="..." />
+            <marker date="1475119181086" expanded="true" signature="1680:1788" ph="..." />
+            <marker date="1475119181086" expanded="true" signature="1680:1961" ph="..." />
+            <marker date="1475119181086" expanded="true" signature="1680:2465" ph="..." />
           </folding>
         </state>
       </provider>
