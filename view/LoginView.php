@@ -1,6 +1,7 @@
 <?php
 require_once('RegisterView.php');
 
+
 /** Class LoginView that is connectedgit  RegisterView
  * Class LoginView
  */
@@ -17,8 +18,11 @@ class LoginView {
     private $conn;
     private $rv;
 
+
+
     function __construct() {
-        $this->conn = pg_connect("host=ec2-54-75-228-51.eu-west-1.compute.amazonaws.com port=5432 dbname=dfamvr9489el11 user=bkmuesonvzihku password= SQ9eCnS1Y0UqO9t0qZ0clDO4nn sslmode=require");
+        $config = require_once('config.php');
+        $this->conn = pg_connect($config);
         if(!$this->conn)
             die("Could not connect to database: ".mysqli_connect_error());
         $this->rv = new RegisterView($this->conn);
