@@ -21,7 +21,7 @@ class LoginView {
 
 
     function __construct() {
-        $config = require_once('config.php');
+        $config = require_once('../config.php');
         $this->conn = pg_connect($config);
         if(!$this->conn)
             die("Could not connect to database: ".mysqli_connect_error());
