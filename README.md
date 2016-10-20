@@ -39,6 +39,6 @@ However I already registered two users already to test:
 
     ###[Test the application here](http://a4-requirements-n-code-quality.herokuapp.com/)
 
-* ##[Latest GitHub release](https://github.com/Toubic/A4-Requirements-n-Code-Quality/releases/tag/v2.0)
+* ##[Latest GitHub release](https://github.com/Toubic/A4-Requirements-n-Code-Quality/releases/tag/v4.0)
     
     
