@@ -6,6 +6,8 @@
 
 class LayoutView {
 
+    private static $isLoggedIn = 'isLoggedIn';
+
     /** Render view
      * @param LoginView $v
      * @param DateTimeView $dtv
@@ -17,11 +19,11 @@ class LayoutView {
       if($v->conn->login($v->getRequestUserName(), $v->getRequestPassword()))
           $isLoggedIn = "Yes";
 
-      elseif(!isset($_SESSION['isLoggedIn']) || $v->isLoggedOut())
+      elseif(!isset($_SESSION[self::$isLoggedIn]) || $v->isLoggedOut())
           $isLoggedIn = "No";
 
       else
-          $isLoggedIn = $_SESSION['isLoggedIn'];
+          $isLoggedIn = $_SESSION[self::$isLoggedIn];
 
 
       // Set different a tag depending on current view:
