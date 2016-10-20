@@ -12,9 +12,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 //CREATE OBJECTS OF THE VIEWS
-$v = new LoginView();
-$dtv = new DateTimeView();
-$lv = new LayoutView();
+try {
+    $v = new LoginView();
+    $dtv = new DateTimeView();
+    $lv = new LayoutView();
 
-$lv->render($v, $dtv);
-
+    $lv->render($v, $dtv);
+}
+catch (Exception $e){
+    echo $e->getMessage();
+}
