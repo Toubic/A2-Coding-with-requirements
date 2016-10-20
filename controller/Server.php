@@ -8,7 +8,7 @@ class Server
     private static $inRegisterView = 'register';
     private $v;
     private $rv;
-    public $conn;
+    private $conn;
 
 
 
@@ -122,5 +122,17 @@ class Server
 
         $response = $this->rv->generateRegisterForm($message);
         return $response;
+    }
+
+    public function isLoggedIn(){
+        // If logged in or not:
+        if($this->conn->login($this->v->getRequestUserName(), $this->v->getRequestPassword()))
+            $_SESSION[self::$isLoggedIn] = "Yes";
+
+        elseif(!isset($_SESSION[self::$isLoggedIn]) || $this->v->isLoggedOut())
+            $_SESSION[self::$isLoggedIn] = "No";
+
+        else
+            $_SESSION[self::$isLoggedIn] = $_SESSION[self::$isLoggedIn];
     }
 }
