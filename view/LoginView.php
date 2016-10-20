@@ -32,7 +32,7 @@ class LoginView {
 	* @param $message, String output message
 	* @return  void, BUT writes to standard output!
 	*/
-	public function generateLoginFormHTML($message) {
+	public function generateLoginForm($message) {
 
 	    // If username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]))

@@ -40,7 +40,6 @@ class Server
 
         }
 
-
         //If in login view:
         if(!isset($_GET[self::$inRegisterView])) {
             $response = $this->loginHandling($message);
@@ -77,7 +76,7 @@ class Server
         }
         //If not logged in:
         if ($_SESSION[self::$isLoggedIn] === "No") {
-            $response = $this->v->generateLoginFormHTML($message);
+            $response = $this->v->generateLoginForm($message);
             $message = "";
             return $response;
         }
@@ -85,7 +84,7 @@ class Server
         if ($this->v->isLoggedOut()) {
             $_SESSION[self::$isLoggedIn] = "No";
             $message = "Bye bye!";
-            $response = $this->v->generateLoginFormHTML($message);
+            $response = $this->v->generateLoginForm($message);
             $message = "";
             return $response;
         }
@@ -121,7 +120,7 @@ class Server
         if($this->conn->userExists($registerUsername))
             $message .= "User exists, pick another username.<br>";
 
-        $response = $this->rv->generateRegisterPage($message);
+        $response = $this->rv->generateRegisterForm($message);
         return $response;
     }
 }
