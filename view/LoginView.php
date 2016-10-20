@@ -15,6 +15,7 @@ class LoginView {
     private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
     private static $isLoggedIn = 'isLoggedIn';
+    private static $inRegisterView = 'inRegisterView';
     private $rv;
     public $conn;
 
@@ -49,7 +50,7 @@ class LoginView {
         $registerRepeatPassword = $this->rv->getRegisterRepeatPassword();
 
         //If in register view:
-        if(isset($_GET["register"])){
+        if(isset($_GET[self::$inRegisterView])){
 
                 if (is_string($registerUsername) && strlen($registerUsername) < 3)
                     $message = "Username has too few characters, at least 3 characters.<br>";
@@ -68,7 +69,7 @@ class LoginView {
 
 
         //If login view:
-        if(!isset($_GET["register"])) {
+        if(!isset($_GET[self::$inRegisterView])) {
             if ($username === "") {
                 $message = "Username is missing";
             }

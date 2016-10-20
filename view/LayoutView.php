@@ -7,6 +7,7 @@
 class LayoutView {
 
     private static $isLoggedIn = 'isLoggedIn';
+    private static $inRegisterView = 'inRegisterView';
 
     /** Render view
      * @param LoginView $v
@@ -27,10 +28,10 @@ class LayoutView {
 
 
       // Set different a tag depending on current view:
-      if($isLoggedIn === "No" && !isset($_GET["register"]))
+      if($isLoggedIn === "No" && !isset($_GET[self::$inRegisterView]))
         $aTag = '<a href="?register">Register a new user</a>';
 
-      elseif(isset($_GET["register"]))
+      elseif(isset($_GET[self::$inRegisterView]))
           $aTag = '<a href="/">Back to login</a>';
 
       else
