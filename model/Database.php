@@ -12,6 +12,12 @@ class Database
             die("Could not connect to database: ".mysqli_connect_error());
     }
 
+    /*** Returns true if logged in successfully else returns false
+     * @param $username
+     * @param $password
+     * @return bool
+     */
+
     public function login($username, $password){
 
         $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
