@@ -11,6 +11,7 @@ class RegisterView
     private static $passwordRepeat = 'RegisterView::PasswordRepeat';
     private static $messageId = 'RegisterView::Message';
     private static $register = 'RegisterView::Register';
+    private static $inRegisterView = 'register';
     private $conn;
 
     /**
@@ -75,6 +76,35 @@ class RegisterView
 				</fieldset>
 			</form>
 		';
+    }
+
+    /*** Handles what happens after registration attempt
+     * @return string
+     */
+
+    public function registerHandling(){
+
+        //Fetch register reequest variables:
+        $registerUsername = $this->getRegisterUserName();
+        $registerPassword = $this->getRegisterPassword();
+        $registerRepeatPassword = $this->getRegisterRepeatPassword();
+
+        $message = "";
+
+        if (is_string($registerUsername) && strlen($registerUsername) < 3)
+            $message = "Username has too few characters, at least 3 characters.<br>";
+
+        if (is_string($registerPassword) && strlen($registerPassword) < 6)
+            $message .= "Password has too few characters, at least 6 characters.<br>";
+
+        if($registerPassword !== $registerRepeatPassword)
+            $message .= "Passwords do not match.<br>";
+
+        if($this->conn->userExists($registerUsername))
+            $message .= "User exists, pick another username.<br>";
+
+        $response = $this->generateRegisterNewUserHTML($message);
+        return $response;
     }
 
     //CREATE GET-FUNCTIONS TO FETCH REGISTER VARIABLES

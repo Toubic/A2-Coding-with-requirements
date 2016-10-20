@@ -38,76 +38,23 @@ class LoginView {
         if(!isset($_SESSION[self::$isLoggedIn]))
             $_SESSION[self::$isLoggedIn] = "No";
 
-		$message = '';
+		$message = "";
+        $response = "";
 
-        //Fetch login request variables:
-        $username = $this->getRequestUserName();
-        $password = $this->getRequestPassword();
-
-        //Fetch register reequest variables:
-        $registerUsername = $this->rv->getRegisterUserName();
-        $registerPassword = $this->rv->getRegisterPassword();
-        $registerRepeatPassword = $this->rv->getRegisterRepeatPassword();
 
         //If in register view:
         if(isset($_GET[self::$inRegisterView])){
+            $response = $this->rv->registerHandling();
 
-                if (is_string($registerUsername) && strlen($registerUsername) < 3)
-                    $message = "Username has too few characters, at least 3 characters.<br>";
-
-                if (is_string($registerPassword) && strlen($registerPassword) < 6)
-                    $message .= "Password has too few characters, at least 6 characters.<br>";
-
-                if($registerPassword !== $registerRepeatPassword)
-                    $message .= "Passwords do not match.<br>";
-
-                if($this->conn->userExists($registerUsername))
-                    $message .= "User exists, pick another username.<br>";
-                $response = $this->rv->generateRegisterNewUserHTML($message);
-                return $response;
         }
 
 
-        //If login view:
+        //If in login view:
         if(!isset($_GET[self::$inRegisterView])) {
-            if ($username === "") {
-                $message = "Username is missing";
-            }
-            if ($username !== "" && $password === "") {
-                $message = "Password is missing";
-            }
-            if ($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
-                if ($_SESSION[self::$isLoggedIn] === "Yes") {
-                    $message = "";
-                } elseif ($this->conn->login($username, $password)) {
-                    $_SESSION[self::$isLoggedIn] = "Yes";
-                    $message = "Welcome";
-                } else {
-                    $message = "Wrong name or password";
-                }
-            }
-            //If not logged in:
-            if ($_SESSION[self::$isLoggedIn] === "No") {
-                $response = $this->generateLoginFormHTML($message);
-                $message = "";
-                return $response;
-            }
-            // If logged out:
-            if ($this->isLoggedOut()) {
-                $_SESSION[self::$isLoggedIn] = "No";
-                $message = "Bye bye!";
-                $response = $this->generateLoginFormHTML($message);
-                $message = "";
-                return $response;
-            }
-            //If logged in successfully:
-            if ($_SESSION[self::$isLoggedIn] === "Yes") {
-                $response = $this->generateLogoutButtonHTML($message);
-                $message = "";
-                return $response;
-            }
+            $response = $this->loginHandling();
         }
 
+        return $response;
 	}
 
 	/**
@@ -157,6 +104,54 @@ class LoginView {
 			</form>
 		';
 	}
+
+    /*** Handles what happens after login attempt
+     *
+     */
+
+	public function loginHandling(){
+
+        //Fetch login request variables:
+        $username = $this->getRequestUserName();
+        $password = $this->getRequestPassword();
+
+        if ($username === "") {
+            $message = "Username is missing";
+        }
+        if ($username !== "" && $password === "") {
+            $message = "Password is missing";
+        }
+        if ($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
+            if ($_SESSION[self::$isLoggedIn] === "Yes") {
+                $message = "";
+            } elseif ($this->conn->login($username, $password)) {
+                $_SESSION[self::$isLoggedIn] = "Yes";
+                $message = "Welcome";
+            } else {
+                $message = "Wrong name or password";
+            }
+        }
+        //If not logged in:
+        if ($_SESSION[self::$isLoggedIn] === "No") {
+            $message = "";
+            $response = $this->generateLoginFormHTML($message);
+            return $response;
+        }
+        // If logged out:
+        if ($this->isLoggedOut()) {
+            $_SESSION[self::$isLoggedIn] = "No";
+            $message = "Bye bye!";
+            $response = $this->generateLoginFormHTML($message);
+            $message = "";
+            return $response;
+        }
+        //If logged in successfully:
+        if ($_SESSION[self::$isLoggedIn] === "Yes") {
+            $response = $this->generateLogoutButtonHTML($message);
+            $message = "";
+            return $response;
+        }
+    }
 	
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	public function getRequestUserName() {
