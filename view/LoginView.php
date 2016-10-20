@@ -15,7 +15,7 @@ class LoginView {
     private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
     private static $isLoggedIn = 'isLoggedIn';
-    private static $inRegisterView = 'inRegisterView';
+    private static $inRegisterView = 'register';
     private $rv;
     public $conn;
 

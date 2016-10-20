@@ -7,7 +7,7 @@
 class LayoutView {
 
     private static $isLoggedIn = 'isLoggedIn';
-    private static $inRegisterView = 'inRegisterView';
+    private static $inRegisterView = 'register';
 
     /** Render view
      * @param LoginView $v
