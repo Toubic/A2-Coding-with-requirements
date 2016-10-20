@@ -1,9 +1,7 @@
 <?php
-require_once('RegisterView.php');
-require_once(__DIR__.'/../model/Database.php');
 
 
-/** Class LoginView that is connectedgit  RegisterView
+/** Class LoginView that presents the login page
  * Class LoginView
  */
 
@@ -14,55 +12,13 @@ class LoginView {
 	private static $password = 'LoginView::Password';
     private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
-    private static $isLoggedIn = 'isLoggedIn';
-    private static $inRegisterView = 'register';
-    private $rv;
-    public $conn;
-
-
-
-    function __construct() {
-        $this->conn = new Database();
-        $this->rv = new RegisterView($this->conn);
-    }
-
-	/**
-	 * Create HTTP response
-	 *
-	 * Should be called after a login attempt has been determined
-	 *
-	 * @return  void BUT writes to standard output and cookies!
-	 */
-	public function response() {
-
-        if(!isset($_SESSION[self::$isLoggedIn]))
-            $_SESSION[self::$isLoggedIn] = "No";
-
-		$message = "";
-        $response = "";
-
-
-        //If in register view:
-        if(isset($_GET[self::$inRegisterView])){
-            $response = $this->rv->registerHandling($message);
-
-        }
-
-
-        //If in login view:
-        if(!isset($_GET[self::$inRegisterView])) {
-            $response = $this->loginHandling($message);
-        }
-
-        return $response;
-	}
 
 	/**
 	* Generate HTML code on the output buffer for the logout button
 	* @param $message, String output message
 	* @return  void, BUT writes to standard output!
 	*/
-	private function generateLogoutButtonHTML($message) {
+	public function generateLogoutButtonHTML($message) {
 		return '
 			<form method="post" >
 				<p id="' . self::$messageId . '">' . $message .'</p>
@@ -76,7 +32,7 @@ class LoginView {
 	* @param $message, String output message
 	* @return  void, BUT writes to standard output!
 	*/
-	private function generateLoginFormHTML($message) {
+	public function generateLoginFormHTML($message) {
 
 	    // If username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]))
@@ -104,55 +60,6 @@ class LoginView {
 			</form>
 		';
 	}
-
-    /*** Handles what happens after login attempt
-     *
-     */
-
-	public function loginHandling($message){
-
-        //Fetch login request variables:
-        $username = $this->getRequestUserName();
-        $password = $this->getRequestPassword();
-
-        if ($username === "") {
-            $message = "Username is missing";
-        }
-        if ($username !== "" && $password === "") {
-            $message = "Password is missing";
-        }
-        if ($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
-            if ($_SESSION[self::$isLoggedIn] === "Yes") {
-                $message = "";
-            } elseif ($this->conn->login($username, $password)) {
-                $_SESSION[self::$isLoggedIn] = "Yes";
-                $message = "Welcome";
-            } else {
-                $message = "Wrong name or password";
-            }
-        }
-        //If not logged in:
-        if ($_SESSION[self::$isLoggedIn] === "No") {
-            $response = $this->generateLoginFormHTML($message);
-            $message = "";
-            return $response;
-        }
-        // If logged out:
-        if ($this->isLoggedOut()) {
-            $_SESSION[self::$isLoggedIn] = "No";
-            $message = "Bye bye!";
-            $response = $this->generateLoginFormHTML($message);
-            $message = "";
-            return $response;
-        }
-        //If logged in successfully:
-        if ($_SESSION[self::$isLoggedIn] === "Yes") {
-            $response = $this->generateLogoutButtonHTML($message);
-            $message = "";
-            return $response;
-        }
-
-    }
 	
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	public function getRequestUserName() {

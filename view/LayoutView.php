@@ -14,10 +14,10 @@ class LayoutView {
      * @param DateTimeView $dtv
      */
 
-  public function render(LoginView $v, DateTimeView $dtv) {
+  public function render(LoginView $v, DateTimeView $dtv, Server $s) {
 
       // If logged in or not:
-      if($v->conn->login($v->getRequestUserName(), $v->getRequestPassword()))
+      if($s->conn->login($v->getRequestUserName(), $v->getRequestPassword()))
           $isLoggedIn = "Yes";
 
       elseif(!isset($_SESSION[self::$isLoggedIn]) || $v->isLoggedOut())
@@ -49,7 +49,7 @@ class LayoutView {
               ' . $this->renderIsLoggedIn($isLoggedIn) . '
               
               <div class="container">
-                  ' . $v->response() . '
+                  ' . $s->response() . '
                   
                   ' . $dtv->show() . '
               </div>
