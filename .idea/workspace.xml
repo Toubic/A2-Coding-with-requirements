@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8b0c36d-34da-4d9f-9bf3-cc318628342f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controller/Server.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/LayoutView.php" afterPath="$PROJECT_DIR$/view/LayoutView.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/LoginView.php" afterPath="$PROJECT_DIR$/view/LoginView.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/RegisterView.php" afterPath="$PROJECT_DIR$/view/RegisterView.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/Server.php" afterPath="$PROJECT_DIR$/controller/Server.php" />
     </list>
     <ignored path="A2-Coding-with-requirements.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterView.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegisterView.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2565">
+            <state relative-caret-position="1917">
               <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
               <folding>
                 <element signature="e#7#64#0#PHP" expanded="true" />
@@ -165,11 +161,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Server.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/Server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="243">
+              <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -191,8 +187,8 @@
         <option value="$PROJECT_DIR$/view/RegisterView.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/view/LayoutView.php" />
-        <option value="$PROJECT_DIR$/controller/Server.php" />
         <option value="$PROJECT_DIR$/view/LoginView.php" />
+        <option value="$PROJECT_DIR$/controller/Server.php" />
       </list>
     </option>
   </component>
@@ -396,16 +392,16 @@
       <workItem from="1476913641849" duration="1205000" />
       <workItem from="1476916001081" duration="70000" />
       <workItem from="1476916112635" duration="1630000" />
-      <workItem from="1476917754667" duration="22948000" />
+      <workItem from="1476917754667" duration="23370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150201000" />
+    <option name="totallyTimeSpent" value="150623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2207304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -413,7 +409,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2926045" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2926045" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1031,14 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/Server.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/DateTimeView.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1070,6 +1058,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1917">
+          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+          <folding>
+            <element signature="e#7#64#0#PHP" expanded="true" />
+            <marker date="1476944579668" expanded="true" signature="2718:3531" ph="..." />
+            <marker date="1476944579668" expanded="true" signature="2735:2815" ph="..." />
+            <marker date="1476944579668" expanded="true" signature="2735:2843" ph="..." />
+            <marker date="1476944579668" expanded="true" signature="2735:3016" ph="..." />
+            <marker date="1476944579668" expanded="true" signature="2735:3520" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/LoginView.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1599">
@@ -1088,18 +1091,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/RegisterView.php">
+    <entry file="file://$PROJECT_DIR$/controller/Server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
-          <folding>
-            <element signature="e#7#64#0#PHP" expanded="true" />
-            <marker date="1476944579668" expanded="true" signature="2718:3531" ph="..." />
-            <marker date="1476944579668" expanded="true" signature="2735:2815" ph="..." />
-            <marker date="1476944579668" expanded="true" signature="2735:2843" ph="..." />
-            <marker date="1476944579668" expanded="true" signature="2735:3016" ph="..." />
-            <marker date="1476944579668" expanded="true" signature="2735:3520" ph="..." />
-          </folding>
+        <state relative-caret-position="243">
+          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

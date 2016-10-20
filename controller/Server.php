@@ -82,7 +82,7 @@ class Server
             return $response;
         }
         // If logged out:
-        if ($this->isLoggedOut()) {
+        if ($this->v->isLoggedOut()) {
             $_SESSION[self::$isLoggedIn] = "No";
             $message = "Bye bye!";
             $response = $this->v->generateLoginFormHTML($message);
