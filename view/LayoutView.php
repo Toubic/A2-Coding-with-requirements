@@ -16,9 +16,9 @@ class LayoutView {
 
   public function render(LoginView $v, DateTimeView $dtv, Server $s) {
 
-      $isLoggedIn = $_SESSION[self::$isLoggedIn];
-
       $s->isLoggedIn();
+
+      $isLoggedIn = $_SESSION[self::$isLoggedIn];
 
       // Set different a tag depending on current view:
       if($isLoggedIn === "No" && !isset($_GET[self::$inRegisterView]))
