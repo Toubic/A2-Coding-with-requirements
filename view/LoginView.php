@@ -67,6 +67,7 @@ class LoginView {
                 return $response;
         }
 
+
         //If login view:
         if(!isset($_GET["register"])) {
             if ($username === "") {

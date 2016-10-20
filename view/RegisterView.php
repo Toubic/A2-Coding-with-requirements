@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__.'/../model/Database.php');
+
 /** Class view for registration
  * Class RegisterView
  */
@@ -50,7 +52,7 @@ class RegisterView
         // If username already exists but passwords are valid, then fill in the username again automatically:
         elseif(isset($_POST[self::$password]) && $_POST[self::$password] === $_POST[self::$passwordRepeat] &&
             strlen($_POST[self::$password]) >= 6 &&
-            $this->userExists($_POST[self::$name])) {
+            $this->conn->userExists($_POST[self::$name])) {
             $username = $_POST[self::$name];
         }
         else

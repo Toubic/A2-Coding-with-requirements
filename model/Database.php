@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Toubic
- * Date: 2016-10-20
- * Time: 02:42
- */
+
 class Database
 {
     private $conn;
