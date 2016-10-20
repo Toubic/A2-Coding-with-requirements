@@ -76,10 +76,10 @@ class LoginView {
                 $message = "Password is missing";
             }
             if ($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
-                if ($_SESSION['isLoggedIn'] === "Yes") {
+                if ($_SESSION[self::$isLoggedIn] === "Yes") {
                     $message = "";
                 } elseif ($this->conn->login($username, $password)) {
-                    $_SESSION['isLoggedIn'] = "Yes";
+                    $_SESSION[self::$isLoggedIn] = "Yes";
                     $message = "Welcome";
                 } else {
                     $message = "Wrong name or password";
