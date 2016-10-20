@@ -12,9 +12,7 @@ class LoginView {
 	private static $logout = 'LoginView::Logout';
 	private static $name = 'LoginView::UserName';
 	private static $password = 'LoginView::Password';
-	private static $cookieName = 'LoginView::CookieName';
-	private static $cookiePassword = 'LoginView::CookiePassword';
-	private static $keep = 'LoginView::KeepMeLoggedIn';
+	private static $isLoggedIn = 'LoginView::IsLoggedIn';
 	private static $messageId = 'LoginView::Message';
     private $rv;
     public $conn;
@@ -35,8 +33,8 @@ class LoginView {
 	 */
 	public function response() {
 
-        if(!isset($_SESSION['isLoggedIn']))
-            $_SESSION['isLoggedIn'] = "No";
+        if(!isset($_SESSION[self::$isLoggedIn]))
+            $_SESSION[self::$isLoggedIn] = "No";
 
 		$message = '';
 
@@ -87,21 +85,21 @@ class LoginView {
                 }
             }
             //If not logged in:
-            if ($_SESSION['isLoggedIn'] === "No") {
+            if ($_SESSION[self::$isLoggedIn] === "No") {
                 $response = $this->generateLoginFormHTML($message);
                 $message = "";
                 return $response;
             }
             // If logged out:
             if ($this->isLoggedOut()) {
-                $_SESSION['isLoggedIn'] = "No";
+                $_SESSION[self::$isLoggedIn] = "No";
                 $message = "Bye bye!";
                 $response = $this->generateLoginFormHTML($message);
                 $message = "";
                 return $response;
             }
             //If logged in successfully:
-            if ($_SESSION['isLoggedIn'] === "Yes") {
+            if ($_SESSION[self::$isLoggedIn] === "Yes") {
                 $response = $this->generateLogoutButtonHTML($message);
                 $message = "";
                 return $response;
