@@ -23,37 +23,6 @@ class RegisterView
         $this->conn = $conn;
     }
 
-    /** Insert a new user to the database
-     * @param $username
-     * @param $password
-     */
-
-    public function insertUserToDatabase($username, $password) {
-
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-
-        $query = pg_query($this->conn, $sql);
-    }
-
-    /** Checks if user exists in the database
-     * @param $username, username to check
-     * @return bool, true if user exists
-     */
-
-    public function userExists($username){
-
-        $sql = "SELECT * FROM users WHERE username='$username'";
-
-        $query = pg_query($this->conn, $sql);
-
-        $result = pg_fetch_object($query);
-
-        if($result)
-            return true;
-        else
-            return false;
-    }
-
     public function generateRegisterNewUserHTML($message){
 
         // If valid username has been entered but password is missing then fill in the username again automatically:

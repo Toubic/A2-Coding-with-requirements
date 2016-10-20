@@ -1,5 +1,6 @@
 <?php
 require_once('RegisterView.php');
+require_once(__DIR__.'/../model/Database.php');
 
 
 /** Class LoginView that is connectedgit  RegisterView
@@ -15,31 +16,14 @@ class LoginView {
 	private static $cookiePassword = 'LoginView::CookiePassword';
 	private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
-    private $conn;
     private $rv;
+    public $conn;
 
 
 
     function __construct() {
-        $config = !getenv('DB_CREDENTIALS') ? require_once(__DIR__.'/../config.php') : getenv('DB_CREDENTIALS');
-        $this->conn = pg_connect($config);
-        if(!$this->conn)
-            die("Could not connect to database: ".mysqli_connect_error());
+        $this->conn = new Database();
         $this->rv = new RegisterView($this->conn);
-    }
-
-    public function login($username, $password){
-
-            $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-
-            $query = pg_query($this->conn, $sql);
-
-            $result = pg_fetch_object($query);
-
-            if($result)
-                return true;
-            else
-                return false;
     }
 
 	/**
@@ -77,7 +61,7 @@ class LoginView {
                 if($registerPassword !== $registerRepeatPassword)
                     $message .= "Passwords do not match.<br>";
 
-                if($this->rv->userExists($registerUsername))
+                if($this->conn->userExists($registerUsername))
                     $message .= "User exists, pick another username.<br>";
                 $response = $this->rv->generateRegisterNewUserHTML($message);
                 return $response;
@@ -94,7 +78,7 @@ class LoginView {
             if ($username !== "" && $password !== "" && strlen($username) > 0 && strlen($password) > 0) {
                 if ($_SESSION['isLoggedIn'] === "Yes") {
                     $message = "";
-                } elseif ($this->login($username, $password)) {
+                } elseif ($this->conn->login($username, $password)) {
                     $_SESSION['isLoggedIn'] = "Yes";
                     $message = "Welcome";
                 } else {
