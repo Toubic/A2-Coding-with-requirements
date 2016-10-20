@@ -13,6 +13,7 @@ class LoginView {
 	private static $name = 'LoginView::UserName';
 	private static $password = 'LoginView::Password';
 	private static $isLoggedIn = 'LoginView::IsLoggedIn';
+    private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
     private $rv;
     public $conn;
