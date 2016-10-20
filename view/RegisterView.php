@@ -82,14 +82,12 @@ class RegisterView
      * @return string
      */
 
-    public function registerHandling(){
+    public function registerHandling($message){
 
         //Fetch register reequest variables:
         $registerUsername = $this->getRegisterUserName();
         $registerPassword = $this->getRegisterPassword();
         $registerRepeatPassword = $this->getRegisterRepeatPassword();
-
-        $message = "";
 
         if (is_string($registerUsername) && strlen($registerUsername) < 3)
             $message = "Username has too few characters, at least 3 characters.<br>";

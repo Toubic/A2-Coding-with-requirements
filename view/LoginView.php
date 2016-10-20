@@ -44,14 +44,14 @@ class LoginView {
 
         //If in register view:
         if(isset($_GET[self::$inRegisterView])){
-            $response = $this->rv->registerHandling();
+            $response = $this->rv->registerHandling($message);
 
         }
 
 
         //If in login view:
         if(!isset($_GET[self::$inRegisterView])) {
-            $response = $this->loginHandling();
+            $response = $this->loginHandling($message);
         }
 
         return $response;
@@ -109,7 +109,7 @@ class LoginView {
      *
      */
 
-	public function loginHandling(){
+	public function loginHandling($message){
 
         //Fetch login request variables:
         $username = $this->getRequestUserName();
@@ -133,8 +133,8 @@ class LoginView {
         }
         //If not logged in:
         if ($_SESSION[self::$isLoggedIn] === "No") {
-            $message = "";
             $response = $this->generateLoginFormHTML($message);
+            $message = "";
             return $response;
         }
         // If logged out:
@@ -151,6 +151,7 @@ class LoginView {
             $message = "";
             return $response;
         }
+
     }
 	
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
