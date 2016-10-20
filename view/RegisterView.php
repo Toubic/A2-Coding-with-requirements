@@ -1,6 +1,6 @@
 <?php
 
-/** Class view for registration
+/** Class view for registration page
  * Class RegisterView
  */
 
@@ -23,7 +23,12 @@ class RegisterView
         $this->conn = $conn;
     }
 
-    public function generateRegisterNewUserHTML($message){
+    /***
+     * @param $message
+     * @return string
+     */
+
+    public function generateRegisterPage($message){
 
         // If valid username has been entered but password is missing then fill in the username again automatically:
         if(isset($_POST[self::$name]) && strlen($_POST[self::$name]) >= 3 && $_POST[self::$password] === "")

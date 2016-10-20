@@ -121,7 +121,7 @@ class Server
         if($this->conn->userExists($registerUsername))
             $message .= "User exists, pick another username.<br>";
 
-        $response = $this->rv->generateRegisterNewUserHTML($message);
+        $response = $this->rv->generateRegisterPage($message);
         return $response;
     }
 }
