@@ -21,7 +21,7 @@ class LoginView {
 
 
     function __construct() {
-        $config = getenv('DB_CREDENTIALS') || require_once(__DIR__.'/../config.php');
+        $config = !getenv('DB_CREDENTIALS') ? require_once(__DIR__.'/../config.php') : getenv('DB_CREDENTIALS');
         $this->conn = pg_connect($config);
         if(!$this->conn)
             die("Could not connect to database: ".mysqli_connect_error());
